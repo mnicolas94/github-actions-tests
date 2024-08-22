@@ -23,14 +23,17 @@ jobs:
     name: test
     runs-on: ubuntu-latest
     steps:
-      - run: |
+      - name: r
+        run: |
           echo ${{ inputs.bool }}
           echo ${{ inputs.str }}
           echo ${{ secrets.SOME_SECRET }}
-      - if: ${{ secrets.SECRET_A == 'a' }}
+      - name: a
+        if: ${{ secrets.SECRET_A == 'a' }}
         run: |
           echo "secretA is a"
-      - if: ${{ secrets.SECRET_B == 'b' }}
+      - name: b
+        if: ${{ secrets.SECRET_B == 'b' }}
         run: |
           echo "secretB is b"
           

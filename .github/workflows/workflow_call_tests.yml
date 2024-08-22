@@ -9,13 +9,6 @@ on:
       str:
         type: string
         required: true
-    secrets:
-      SECRET_A:
-        required: true
-      SECRET_B:
-        required: true
-      SOME_SECRET:
-        required: true
       
 
 jobs:

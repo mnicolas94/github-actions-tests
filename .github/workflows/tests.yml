@@ -15,4 +15,7 @@ jobs:
     with:
       bool: ${{ inputs.bool }}
       str: "asdqw"
-    secrets: inherit
+    secrets:
+      SECRET_A: ${{ secrets.SECRET_A }}
+      SECRET_B: ${{ secrets.SECRET_B }}
+      SOME_SECRET: ${{ secrets.SOME_SECRET }}

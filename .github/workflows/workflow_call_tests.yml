@@ -1,0 +1,33 @@
+name: Build and deploy release
+
+on:
+  workflow_call:
+    inputs:
+      bool:
+        type: boolean
+        required: true
+      str:
+        type: string
+        required: true
+    secrets:
+      SECRET_A:
+        required: true
+      
+
+jobs:
+  job1:
+    name: test
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo ${{ inputs.bool }}
+          echo ${{ inputs.str }}
+          echo ${{ secrets.SOME_SECRET }}
+      - if: ${{ secrets.SECRET_A == 'a' }}
+        run: |
+          echo "secretA is a"
+      - if: ${{ secrets.SECRET_B == 'b' }}
+        run: |
+          echo "secretB is b"
+          
+      

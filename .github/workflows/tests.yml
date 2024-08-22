@@ -10,25 +10,9 @@ on:
         description: ""
 
 jobs:
-  test:
-    name: test
-    runs-on: ubuntu-latest
-    steps:
-      - name: run if boolean
-        if: ${{ inputs.bool }}
-        run: |
-          echo bool is true
-          
-      - name: run if boolean
-        if: ${{ inputs.bool }}
-        run: |
-          echo bool is false
-          
-  depends:
-    name: depends
-    runs-on: ubuntu-latest
-    needs: [test]
-    steps:
-      - name: echo
-        run: |
-          echo depends ran
+  call:
+    uses: mnicolas94/github-actions-tests/.github/workflows/workflow_call_tests.yml@main
+    with:
+      bool: ${{ inputs.bool }}
+      str: "asdqw"
+    secrets: inherit

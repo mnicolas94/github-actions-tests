@@ -28,13 +28,6 @@ jobs:
           echo ${{ inputs.bool }}
           echo ${{ inputs.str }}
           echo ${{ secrets.SOME_SECRET }}
-      - name: a
-        if: ${{ secrets.SECRET_A == 'a' }}
-        run: |
-          echo "secretA is a"
-      - name: b
-        if: ${{ secrets.SECRET_B == 'b' }}
-        run: |
-          echo "secretB is b"
-          
+          echo ${{ secrets.SECRET_A }}
+          echo ${{ secrets.SECRET_B }}        
       

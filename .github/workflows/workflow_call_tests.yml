@@ -1,4 +1,4 @@
-name: Build and deploy release
+name: Workflow call tests
 
 on:
   workflow_call:

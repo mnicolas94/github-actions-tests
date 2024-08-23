@@ -24,7 +24,9 @@ jobs:
       - if: ${{ inputs.foo == '' || inputs.foo == 'dev' }}
         run: |
           echo is dev
+      - run: |
           echo ${{ github.ref }}
+          echo ${{ github.ref_name }}
         
       
   

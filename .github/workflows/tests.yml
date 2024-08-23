@@ -24,10 +24,18 @@ jobs:
       - if: ${{ inputs.foo == '' || inputs.foo == 'dev' }}
         run: |
           echo is dev
+          
+  fail:
+    name: fail
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          exit 1
+  
   call2:
     name: test 2
-    needs: [call]
-    if: ${{ always() && needs.call.result == 'success' }}
+    needs: [call, fail]
+    if: ${{ always() && needs.call.result == 'success' && needs.fail.result == 'failure' }}
     runs-on: ubuntu-latest
     steps:
       - run: |

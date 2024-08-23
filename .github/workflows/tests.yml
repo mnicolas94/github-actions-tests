@@ -9,7 +9,7 @@ on:
       foo:
         type: choice
         required: true
-        default: "dev"
+        default: 'dev'
         options:
           - dev
           - stag

@@ -23,7 +23,7 @@ jobs:
           echo ${{ inputs.foo }}
       - if: ${{ inputs.foo == '' || inputs.foo == 'dev' }}
         run: |
-          echo is dev
+          exit 1
           
   fail:
     name: fail

@@ -8,7 +8,6 @@ on:
     inputs:
       foo:
         type: choice
-        required: true
         default: 'dev'
         options:
           - dev

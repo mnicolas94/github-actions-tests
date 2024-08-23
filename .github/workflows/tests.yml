@@ -2,17 +2,23 @@ name: Tests
 
 
 on:
+  push:
+    branches: [ main ]
   workflow_dispatch:
     inputs:
-      bool:
-        type: boolean
+      foo:
+        type: choice
         required: true
-        description: ""
+        default: "dev"
+        options:
+          - dev
+          - stag
+          - prod
 
 jobs:
   call:
-    uses: mnicolas94/github-actions-tests/.github/workflows/workflow_call_tests.yml@main
-    with:
-      bool: ${{ inputs.bool }}
-      str: "asdqw"
-    secrets: inherit
+    name: test
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo ${{ inputs.foo }}

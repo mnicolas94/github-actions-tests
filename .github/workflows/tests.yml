@@ -21,3 +21,6 @@ jobs:
     steps:
       - run: |
           echo ${{ inputs.foo }}
+      - if: ${{ inputs.foo == '' || inputs.foo == 'dev' }}
+        run: |
+          echo is dev

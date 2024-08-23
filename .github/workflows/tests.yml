@@ -24,3 +24,12 @@ jobs:
       - if: ${{ inputs.foo == '' || inputs.foo == 'dev' }}
         run: |
           echo is dev
+  call2:
+    name: test 2
+    needs: [call]
+    if: ${{ always() && needs.call.result == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo ${{ needs.call.result }}
+  

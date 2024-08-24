@@ -18,15 +18,9 @@ jobs:
   call:
     name: test 1
     runs-on: ubuntu-latest
+    env:
+      foo: ${{ inputs.foo || 'asdqwezxc' }}
     steps:
       - run: |
           echo ${{ inputs.foo }}
-      - if: ${{ inputs.foo == '' || inputs.foo == 'dev' }}
-        run: |
-          echo is dev
-      - run: |
-          echo ${{ github.ref }}
-          echo ${{ github.ref_name }}
-        
-      
-  
+          echo ${{ env.foo }}

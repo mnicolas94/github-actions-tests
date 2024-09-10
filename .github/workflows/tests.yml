@@ -10,10 +10,10 @@ on:
         type: string
         default: "iOS"
 
-env:
-  runner: ${{ fromJSON('["ubuntu-latest", "macos-latest"]')[inputs.foo == 'iOS'] }}
 jobs:
   call:
+    env:
+      runner: ${{ fromJSON('["ubuntu-latest", "macos-latest"]')[inputs.foo == 'iOS'] }}
     name: test 1
     runs-on: ${{ env.runner }}
     steps:

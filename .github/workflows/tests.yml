@@ -12,10 +12,8 @@ on:
 
 jobs:
   call:
-    env:
-      runner: ${{ fromJSON('["ubuntu-latest", "macos-latest"]')[inputs.foo == 'iOS'] }}
     name: test 1
-    runs-on: ${{ env.runner }}
+    runs-on: ${{ fromJSON('["ubuntu-latest", "macos-latest"]')[inputs.foo == 'iOS'] }}
     steps:
       - run: |
           echo ${{ inputs.foo }}

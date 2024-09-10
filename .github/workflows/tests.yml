@@ -7,20 +7,14 @@ on:
   workflow_dispatch:
     inputs:
       foo:
-        type: choice
-        default: 'dev'
-        options:
-          - dev
-          - stag
-          - prod
+        type: boolean
+        default: false
 
 jobs:
   call:
     name: test 1
-    runs-on: ubuntu-latest
-    env:
-      foo: ${{ inputs.foo || 'asdqwezxc' }}
+    runs-on: ${{ fromJSON('["macos-latest", "ubuntu-latest"]')[inputs.foo] }}
     steps:
       - run: |
           echo ${{ inputs.foo }}
-          echo ${{ env.foo }}
+          echo ${{ runner.os }}

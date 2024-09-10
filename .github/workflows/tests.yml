@@ -7,13 +7,13 @@ on:
   workflow_dispatch:
     inputs:
       foo:
-        type: boolean
-        default: false
+        type: string
+        default: "iOS"
 
 jobs:
   call:
     name: test 1
-    runs-on: ${{ fromJSON('["macos-latest", "ubuntu-latest"]')[inputs.foo] }}
+    runs-on: ${{ fromJSON('["ubuntu-latest", "macos-latest"]')[inputs.foo == 'iOS'] }}
     steps:
       - run: |
           echo ${{ inputs.foo }}

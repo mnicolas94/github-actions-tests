@@ -8,7 +8,7 @@ on:
     inputs:
       foo:
         type: string
-        default: ""
+        default: "{bool: true}"
 
 jobs:
   call:

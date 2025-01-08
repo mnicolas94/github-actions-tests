@@ -8,13 +8,14 @@ on:
     inputs:
       foo:
         type: string
-        default: "iOS"
+        default: ""
 
 jobs:
   call:
     name: test 1
-    runs-on: ${{ fromJSON('["ubuntu-latest", "macos-latest"]')[inputs.foo == 'iOS'] }}
+    runs-on: ubuntu-latest
     steps:
       - run: |
           echo ${{ inputs.foo }}
-          echo ${{ runner.os }}
+          echo ${{ fromJSON('["is false", "is true"]')[fromJSON(inputs.foo).bool == 'true'] }}
+          echo ${{ fromJSON('["is false", "is true"]')[fromJSON(inputs.foo).bool == true] }}
